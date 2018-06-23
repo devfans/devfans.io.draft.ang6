@@ -1,0 +1,30 @@
+<div class="container" [class.is-mobile]="mobileQuery.matches" >
+    <mat-sidenav-container class="sidenav-container">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                   [fixedInViewport]="mobileQuery.matches"
+                   [(opened)]="opened" autosizes>
+        <button mat-button>
+            <img [src]="logoPath" class="logo-img"/>
+        </button>
+        <mat-nav-list>
+          <a mat-list-item routerLink={{nav.link}} [routerLinkActive]="['active-route']" *ngFor="let nav of fillerNav">{{nav.name}}</a>
+        </mat-nav-list>
+      </mat-sidenav>
+
+      <mat-sidenav-content>
+          <mat-toolbar class="toolbar">
+              <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+              <h1 class="app-name">devfans.io</h1>
+              <span class="tool-bar-remaining"></span>
+              
+              <button mat-button>
+                  <mat-icon>account_circle</mat-icon>
+              </button>
+           </mat-toolbar>
+          <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+  
+  
+  
